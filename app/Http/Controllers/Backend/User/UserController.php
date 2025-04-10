@@ -44,11 +44,13 @@ class UserController extends Controller
             'model' => 'User'
         ];
         $config['seo'] = config('apps.user');
+        $userCatalogues = \App\Models\UserCatalogue::select('id', 'name')->get();
         $template = 'backend.user.user.index';
         return view('backend.dashboard.layout', compact(
             'template',
             'config',
-            'users'
+            'users',
+            'userCatalogues'
         ));
     }
 
